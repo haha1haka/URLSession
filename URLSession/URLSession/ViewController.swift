@@ -6,25 +6,32 @@
 //
 
 import UIKit
+import AVKit
 
 class ViewController: UIViewController {
-
-    let service = DownloadManager()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        let urlStr = "https://github.com/haha1haka/URLSession/blob/main/Asset/스크린샷%2020221007%2023.32.36.png".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        guard let url = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset") else {
-            print("이건가")
-            return
+    @IBOutlet weak var imageView: UIImageView!
+    
+    let defaultSession = DownloadManager()
+    
+    let imageUrl = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/subak.png")!
+    let url = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/testsimulation.mp4")!
+    
+    @IBAction func downloadButton(_ sender: UIBarButtonItem) {
+        DispatchQueue.main.async {
+            self.defaultSession.downloadTask(url: self.url)
+            self.playDownload()
         }
-        print(url)
-        service.downloadTask(url: url)
     }
     
-
-
 }
-class DayflyCell: UICollectionViewCell {
-    
+extension ViewController {
+    func playDownload() {
+        let playerViewController = AVPlayerViewController()
+        present(playerViewController, animated: true, completion: nil)
+        let url =  DocumentManager.localFilePath(for: self.url)
+        let player = AVPlayer(url: url)
+        playerViewController.player = player
+        player.play()
+    }
 }

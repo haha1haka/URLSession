@@ -27,19 +27,25 @@ class DownloadManager: NSObject, URLSessionDelegate {
 }
 
 extension DownloadManager : URLSessionDownloadDelegate {
+    
+    //delegate에서 임시 파일 위치에 대한 url 을 제공
+    //FileManager 를 통해 앱의 샌드박스 컨테이너 디렉토리로 옮기기
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         print("Finished Downloading to \(location)")
-        //location은 임시적인 위치입니다. 다운 받고 함수가 끝나면 해당 파일은 사라집니다.
         
+        //original request 추출: https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/testsimulation.mp4
         guard let sourcURL = downloadTask.originalRequest?.url else {return}
         
-        print("Source URL : \(sourcURL)")
-        
+        //destinationURL 만들기
         let fileManager = FileManager.default
         let documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        print("♥️\(documentURL)") // documentURL: ..../Document
+        
+        // sourceURL.lastComponent: testsimulation.mp4
         let destinationURL = documentURL.appendingPathComponent(sourcURL.lastPathComponent)
         print("Destination URL : " ,destinationURL)
         
+        //덮어쓰기 위해
         try? fileManager.removeItem(at: destinationURL)
         
         do{
@@ -51,14 +57,17 @@ extension DownloadManager : URLSessionDownloadDelegate {
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-
-            let currentProgress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-            let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-
-            print("current Progress : \(currentProgress) / totalSize : \(totalSize)")
-
-        }
-
         
+        //totalBytesWritten: 총 바이트수 ,totalBytesExpectedToWrite: 예상되는 바이트수 --> 두 값의 비율로 진행률을 계산!
+        let currentProgress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        
+        //ByteCountFormatter: 총 다운로드 파일 크기를 보여줌
+        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+        
+        print("current Progress : \(currentProgress) / totalSize : \(totalSize)")
+        
+    }
+    
+    
     
 }
