@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--🐙-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="URLSession" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,31 +16,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hMz-s3-kdy">
-                                <rect key="frame" x="75" y="121" width="240" height="260"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBY-Qq-rd4">
+                                <rect key="frame" x="151" y="404.66666666666669" width="88" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="다운완료!"/>
+                                <connections>
+                                    <action selector="showVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ayv-wK-HBu"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="itb-LR-VKs">
+                                <rect key="frame" x="50" y="111" width="290" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="gSd-4Z-SWK"/>
+                                    <constraint firstAttribute="height" constant="200" id="wRk-Yb-GvE"/>
                                 </constraints>
-                            </imageView>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hMz-s3-kdy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="1C6-jH-raM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hMz-s3-kdy" secondAttribute="trailing" constant="75" id="QoI-BI-PrV"/>
-                            <constraint firstItem="hMz-s3-kdy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="fXE-At-nam"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="itb-LR-VKs" secondAttribute="trailing" constant="50" id="EFG-H7-p5p"/>
+                            <constraint firstItem="itb-LR-VKs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="YLo-u8-MVp"/>
+                            <constraint firstItem="itb-LR-VKs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ZRc-z2-4AB"/>
+                            <constraint firstItem="EBY-Qq-rd4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b7y-b0-EmN"/>
+                            <constraint firstItem="EBY-Qq-rd4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xmt-2O-1HW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fKb-G2-Dwv">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="play.fill" catalog="system" id="G7O-XS-Y9e"/>
+                    <navigationItem key="navigationItem" title="🐙" id="fKb-G2-Dwv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="play.fill" catalog="system" id="G7O-XS-Y9e">
+                            <connections>
+                                <action selector="downloadButton:" destination="BYZ-38-t0r" id="NWK-fc-TxI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="hMz-s3-kdy" id="XKE-Ko-0Q5"/>
+                        <outlet property="textlabel" destination="itb-LR-VKs" id="1Ed-5H-4HN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1043.0769230769231" y="-2.1327014218009479"/>
+            <point key="canvasLocation" x="892" y="-14"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="D5t-tU-nEb">
+            <objects>
+                <viewController id="icX-xt-JZX" customClass="TestViewController" customModule="URLSession" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RrZ-gp-z6m">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="seX-Rb-0o4">
+                                <rect key="frame" x="75" y="97" width="240" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="9n2-F9-fb5"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="95m-QE-spP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="seX-Rb-0o4" firstAttribute="leading" secondItem="95m-QE-spP" secondAttribute="leading" constant="75" id="Jjq-Wk-ZeJ"/>
+                            <constraint firstItem="95m-QE-spP" firstAttribute="trailing" secondItem="seX-Rb-0o4" secondAttribute="trailing" constant="75" id="lIG-79-hIc"/>
+                            <constraint firstItem="seX-Rb-0o4" firstAttribute="top" secondItem="95m-QE-spP" secondAttribute="top" constant="50" id="ojX-tI-Ncv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="seX-Rb-0o4" id="kkj-yj-y53"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCm-yT-rpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="-2"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gVU-Kt-X4I">
@@ -63,6 +112,9 @@
     </scenes>
     <resources>
         <image name="play.fill" catalog="system" width="117" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -7,6 +7,11 @@
 
 import Foundation
 
+
+protocol DataPassDelegate {
+    func pass(_ object: DownloadManager, currentProgress: Float, totalSize: String)
+}
+
 class DownloadManager: NSObject, URLSessionDelegate {
     var downloadSession : URLSession?
     
@@ -14,17 +19,21 @@ class DownloadManager: NSObject, URLSessionDelegate {
         super.init()
         self.downloadSession = setURLSession()
     }
+    var delegate: DataPassDelegate?
     
     func setURLSession() -> URLSession {
         let configuration = URLSessionConfiguration.default
         return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
     
-    func downloadTask(url : URL){
-        let task = downloadSession?.downloadTask(with: url)
+    func downloadTask(url : URL) {
+        let task = self.downloadSession?.downloadTask(with: url)
         task?.resume()
     }
+        
+
 }
+
 
 extension DownloadManager : URLSessionDownloadDelegate {
     
@@ -35,6 +44,7 @@ extension DownloadManager : URLSessionDownloadDelegate {
         
         //original request 추출: https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/testsimulation.mp4
         guard let sourcURL = downloadTask.originalRequest?.url else {return}
+        
         
         //destinationURL 만들기
         let fileManager = FileManager.default
@@ -48,7 +58,7 @@ extension DownloadManager : URLSessionDownloadDelegate {
         //덮어쓰기 위해
         try? fileManager.removeItem(at: destinationURL)
         
-        do{
+        do{ //Data
             try fileManager.copyItem(at: location, to: destinationURL)
         }
         catch let error {
@@ -56,6 +66,9 @@ extension DownloadManager : URLSessionDownloadDelegate {
         }
     }
     
+    
+    
+    // progress 구하는 코드
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
         //totalBytesWritten: 총 바이트수 ,totalBytesExpectedToWrite: 예상되는 바이트수 --> 두 값의 비율로 진행률을 계산!
@@ -63,9 +76,8 @@ extension DownloadManager : URLSessionDownloadDelegate {
         
         //ByteCountFormatter: 총 다운로드 파일 크기를 보여줌
         let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
-        
-        print("current Progress : \(currentProgress) / totalSize : \(totalSize)")
-        
+        self.delegate?.pass(self, currentProgress: currentProgress, totalSize: totalSize)
+
     }
     
     

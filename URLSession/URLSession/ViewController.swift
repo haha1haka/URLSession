@@ -8,25 +8,28 @@
 import UIKit
 import AVKit
 
+
+
 class ViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textlabel: UITextView!
+    
     
     let defaultSession = DownloadManager()
     
-    let imageUrl = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/subak.png")!
-    let url = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/testsimulation.mp4")!
+    let url = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/pizzTime.mp4")!
     
-    @IBAction func downloadButton(_ sender: UIBarButtonItem) {
-        DispatchQueue.main.async {
-            self.defaultSession.downloadTask(url: self.url)
-            self.playDownload()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        defaultSession.delegate = self
+        textlabel.font = .systemFont(ofSize: 50, weight: .bold)
     }
     
-}
-extension ViewController {
-    func playDownload() {
+    @IBAction func downloadButton(_ sender: UIBarButtonItem) {
+            self.defaultSession.downloadTask(url: self.url)
+    }
+    
+    @IBAction func showVideo(_ sender: UIButton) {
         let playerViewController = AVPlayerViewController()
         present(playerViewController, animated: true, completion: nil)
         let url =  DocumentManager.localFilePath(for: self.url)
@@ -34,4 +37,18 @@ extension ViewController {
         playerViewController.player = player
         player.play()
     }
+}
+
+
+extension ViewController: DataPassDelegate {
+    func pass(_ object: DownloadManager, currentProgress: Float, totalSize: String) {
+        print("current Progress : \(currentProgress) / totalSize : \(totalSize)")
+        DispatchQueue.main.async {
+            self.textlabel.text = String(format: "%.1f%% of %@", currentProgress * 100, totalSize)
+            
+        }
+        
+        
+    }
+    
 }
