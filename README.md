@@ -106,7 +106,7 @@ shared 한계 설명
 
 <br/><br/>
 
-다음으로는 어떤 task 들이 있는지 알아 보았습니다. (대표로 downloadTask 만)
+다음으로는 어떤 task 들이 있는지 알아 보았습니다
 
 
 
@@ -140,7 +140,7 @@ downloadTask 에 익숙치 않기 때문에
 
 <br/><br/>
 
-영상 두개 올리기
+
 
 
 
@@ -154,7 +154,7 @@ downloadTask 에 익숙치 않기 때문에
 
 
 
-URLSessionDownloadDelegate 매서드 살펴보기
+### URLSessionDownloadDelegate 매서드 살펴보기
 
 1. 다운로드 한 사진 or 영상을 filManager 를 통해 저장 해야 한다는점
 2. URLSessionDownloadDelegate
