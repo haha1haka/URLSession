@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textlabel: UITextView!
     
-    
     let defaultSession = DownloadManager()
     
     let url = URL(string: "https://raw.githubusercontent.com/haha1haka/URLSession/main/Asset/pizzTime.mp4")!
@@ -45,10 +44,6 @@ extension ViewController: DataPassDelegate {
         print("current Progress : \(currentProgress) / totalSize : \(totalSize)")
         DispatchQueue.main.async {
             self.textlabel.text = String(format: "%.1f%% of %@", currentProgress * 100, totalSize)
-            
         }
-        
-        
     }
-    
 }

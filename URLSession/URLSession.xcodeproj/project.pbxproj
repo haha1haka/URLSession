@@ -14,7 +14,6 @@
 		F4422034291B72EA00D2F1B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4422033291B72EA00D2F1B8 /* Assets.xcassets */; };
 		F4422037291B72EA00D2F1B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4422035291B72EA00D2F1B8 /* LaunchScreen.storyboard */; };
 		F442203F291B84BD00D2F1B8 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F442203E291B84BD00D2F1B8 /* DownloadManager.swift */; };
-		F4422041291B8A9100D2F1B8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4422040291B8A9100D2F1B8 /* Service.swift */; };
 		F4422043291B8B8900D2F1B8 /* DocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4422042291B8B8900D2F1B8 /* DocumentManager.swift */; };
 		F4F42D85291C73CA00543B2F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F42D84291C73CA00543B2F /* TestViewController.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		F4422036291B72EA00D2F1B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4422038291B72EA00D2F1B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F442203E291B84BD00D2F1B8 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
-		F4422040291B8A9100D2F1B8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		F4422042291B8B8900D2F1B8 /* DocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentManager.swift; sourceTree = "<group>"; };
 		F4F42D84291C73CA00543B2F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +68,6 @@
 				F4F42D84291C73CA00543B2F /* TestViewController.swift */,
 				F4422042291B8B8900D2F1B8 /* DocumentManager.swift */,
 				F442203E291B84BD00D2F1B8 /* DownloadManager.swift */,
-				F4422040291B8A9100D2F1B8 /* Service.swift */,
 				F4422030291B72E900D2F1B8 /* Main.storyboard */,
 				F4422033291B72EA00D2F1B8 /* Assets.xcassets */,
 				F4422035291B72EA00D2F1B8 /* LaunchScreen.storyboard */,
@@ -153,7 +150,6 @@
 				F4F42D85291C73CA00543B2F /* TestViewController.swift in Sources */,
 				F442202F291B72E900D2F1B8 /* ViewController.swift in Sources */,
 				F442202B291B72E900D2F1B8 /* AppDelegate.swift in Sources */,
-				F4422041291B8A9100D2F1B8 /* Service.swift in Sources */,
 				F442202D291B72E900D2F1B8 /* SceneDelegate.swift in Sources */,
 				F4422043291B8B8900D2F1B8 /* DocumentManager.swift in Sources */,
 				F442203F291B84BD00D2F1B8 /* DownloadManager.swift in Sources */,
